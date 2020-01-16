@@ -2,7 +2,7 @@
 
 ## Overview
 
-jsmin.js is a JavaScript Minifier given the target file uses `"use strict";` style.
+`jsmin.js` is a JavaScript Minifier given the target file uses `"use strict";` style.
 
 ## Features
 
@@ -16,36 +16,38 @@ The minifier applies these transformations:
 ## Usage
 
 ```shell
-<path/to/jsmin.js> <path/to/file>(.<ext>)?
+./<path/to/jsmin.js> <path/to/file>(.<ext>)?
 ```
 
 ## Motivation
 
 In my exploration of language parsing, I found [Douglas Crockford's work](https://www.crockford.com) where there is a [JavaScript Minifier](https://www.crockford.com/jsmin.html) that he implemented in C.
 
-However, some of the code was long for a simple utility, so I wanted to write some clever (**not clean**) code that would produce a similar result.
+However, some of the code was verbose for a simple utility, so I wanted to write some clever (**not clean**) code that would produce a similar result.
 
-Through multiple tests, I explored the syntax of JavaScript as I stripped nonessential elements of existing programs to produce unreadable functionally equivalent code.
+Through multiple tests, I had to battle the syntax of JavaScript as I stripped nonessential elements of existing programs to produce unreadable functionally equivalent code.
 
-However, this is not an obfuscator, as I decided that I did not want to change the `Object` output, such as `console.log({ a })`, in which changing the name of the variables would change the output.
+However, this is not an obfuscator, as I decided that I did not want to change the `Object` output, such as `console.log({ a })`, in which changing the name of the variables would change the output (however, that might be good for another project idea).
 
 Side Note: As a personal challenge, there are no `{` or `}` characters in the source code!
 
 ```shell
 # Running jsmin.js on jsmin.js
 ./jsmin.js jsmin.js
-jsmin.js     size: 2394
-jsmin.min.js size: 1126
+jsmin.js     size: 1898
+jsmin.min.js size: 1117
 ```
+
+Without any comments or blank lines, the [source code](https://github.com/syall/jsmin.js/blob/master/jsmin.simp.js) comes out to 34 LOC which is much less than [Crockford's jsmin.c](https://github.com/douglascrockford/JSMin/blob/master/jsmin.c) with 319 LOC (although it includes a large comment block and blank lines, but is still significantly smaller overall).
 
 ## Example
 
-Using the same code snippet at the [blog post](https://www.crockford.com/jsmin.html) where he discusses his implementation, these are the results using jsmin.js:
+Using the same code snippet in [Crockford's blog post](https://www.crockford.com/jsmin.html), these are the results using `jsmin.js`:
 
 ```shell
-./jsmin.js is.js
-is.js     size: 990
-is.min.js size: 435
+./jsmin.js example/is.js
+example/is.js     size: 990
+example/is.min.js size: 435
 ```
 
 ### Original

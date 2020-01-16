@@ -9,7 +9,8 @@ if (process.argv.length !== 3)
 const fs = require('fs');
 
 // Read File
-const name = process.argv.pop(), file = fs.readFileSync(name, 'utf8');
+const name = process.argv.pop();
+const file = fs.readFileSync(name, 'utf8');
 
 /** Utility Functions */
 // is: checks equality of c and m
@@ -21,31 +22,28 @@ const vary = c =>
     '0' <= c && c <= '9' ||
     c === '$' || c === '_';
 // str: checks for quotation
-const str = c =>
-    c === "'" || c === '`' || c === '"';
+const str = c => c === "'" || c === '`' || c === '"';
 
 /** Loop: Minified Content and Past character, Temporary index */
 let minified = p = '', t = 0;
 for (let i = 0; i < file.length; i++)
     // Line Comment
-    if (is(file[i])('/') && is(file[i + 1])('/'))
-        while (!is(file[++i])('\n'));
+    if (is(file[i] + file[i + 1])('//'))
+        (t = file.indexOf('\n', i)) && (i = t);
     // Block Comment
-    else if (is(file[i])('/') && is(file[i + 1])('*'))
-        while (!(is(file[i - 1])('*') && is(file[i])('/'))) i++;
+    else if (is(file[i] + file[i + 1])('/*'))
+        (t = file.indexOf('*/', i + 1)) && (i = t + 1);
     // Shebang
-    else if (is(file[i])('#'))
-        while (!is(file[i - 1])('\n')) minified += file[i++];
+    else if (is(file[i])('#')) (t = file.indexOf('\n', i)) &&
+        (minified += file.slice(i, t + 1)) && (i = t);
     // Control Characters inbetween Variables
     else if (file[i] <= ' ' && !(vary(p) && vary(file[i + 1])))
         continue;
     // Strings
-    else if (str(file[i]) && (p = file[i]))
-        (t = file.indexOf(p, i + 1)) &&
-            (minified += file.slice(i, t + 1)) &&
-            (i = t);
+    else if (str(file[i])) (t = file.indexOf(file[i], i + 1)) &&
+        (minified += file.slice(i, t + 1)) && (i = t);
     // Anything Else
-    else minified += file[i] && (p = file[i]);
+    else (minified += file[i]) && (p = file[i]);
 
 // Index of last . of file
 const dot = name.lastIndexOf('.');
