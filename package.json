@@ -1,6 +1,6 @@
 {
   "name": "jsmin.js",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Clever Command Line JavaScript Minifier",
   "main": "jsmin.js",
   "repository": {
