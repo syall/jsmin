@@ -3,7 +3,13 @@
   "version": "1.0.3",
   "description": "Clever Command Line JavaScript Minifier",
   "main": "jsmin.js",
-  "repository": "git@github.com:syall/jsmin.git",
-  "author": "syall <s.yuan.all@gmail.com>",
-  "license": "MIT"
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:syall/jsmin.git"
+  },
+  "author": "Steven Yuan <s.yuan.all@gmail.com> (syall)",
+  "license": "MIT",
+  "bin": {
+    "jsmin.js": "jsmin.js"
+  }
 }
