@@ -5,11 +5,8 @@
   "main": "jsmin.js",
   "repository": {
     "type": "git",
-    "url": "git@github.com:syall/jsmin.git"
+    "url": "git+https://github.com/syall/jsmin.git"
   },
   "author": "Steven Yuan <s.yuan.all@gmail.com> (syall)",
-  "license": "MIT",
-  "bin": {
-    "jsmin.js": "jsmin.js"
-  }
+  "license": "MIT"
 }
