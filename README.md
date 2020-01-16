@@ -2,7 +2,7 @@
 
 ## Overview
 
-jsmin.js is a JavaScript Minifier given the source code uses `"use strict";` style.
+jsmin.js is a JavaScript Minifier given target file uses `"use strict";` style.
 
 ## Features
 
