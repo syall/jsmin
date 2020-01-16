@@ -1,27 +1,8 @@
 #!/usr/bin/env node
 
-/**
- * JavaScript Minifier (jsmin)
- * Author: Steven Yuan (syall)
- * Date: 1/15/2020
- *
- * Usage: <path/to/jsmin> <path/to/file>(.<ext>)?
- *
- * jsmin for source code using "use strict"; style,
- * which will write to <path/to/file>.min(.<ext>)?.
- *
- * The minifier features these modifications:
- *  - Remove nonessential Control Characters
- *  - Keep Strings Identical
- *  - Strip Comments
- *  - Keep Shebang
- *
- * Fun Fact: The source code is written without '{' or '}'
- */
-
 // Usage
 if (process.argv.length !== 3)
-    console.error(`Usage: <path/to/jsmin> <path/to/file>(.<ext>)?`) ||
+    console.error(`Usage: <path/to/jsmin.js> <path/to/file>(.<ext>)?`) ||
         process.exit(1);
 
 // Import File System Dependencies
