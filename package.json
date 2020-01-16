@@ -1,6 +1,7 @@
 {
-  "name": "jsmin",
+  "name": "jsmin.js",
   "version": "1.0.0",
+  "description": "Clever Command Line JavaScript Minifier",
   "main": "jsmin.js",
   "repository": "git@github.com:syall/jsmin.git",
   "author": "syall <s.yuan.all@gmail.com>",
